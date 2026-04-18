@@ -2,14 +2,15 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using TMPro;
 
-#include "GameManager.cs"
+//#include "GameManager.cs"
 
 public class BPMBar : MonoBehaviour
 {
 
-    public [SerializeField] UnityEngine.UI.Slider bpmSlider;
-    public [SerializeField] UnityEngine.UI.Text message;
+    [SerializeField] UnityEngine.UI.Slider bpmSlider;
+    [SerializeField] TextMeshProUGUI message;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

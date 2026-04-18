@@ -4,16 +4,11 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI counterText;
-    int counterVal;
+    [SerializeField] int score;
 
-    void Update()
+    public void PointIncrease(int value)
     {
-        DoSomethingWithCounter(1);
-    }
-
-    public void DoSomethingWithCounter(int value)
-    {
-        counterVal += value;
-        counterText.text = "Counter for something: " + counterVal;
+        score += value;
+        counterText.text = "Compressions Given: " + score;
     }
 }
