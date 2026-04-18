@@ -28,13 +28,24 @@ public class incomingObject : MonoBehaviour
     [SerializeField] TimingType timingType;
     [SerializeField] TextMeshProUGUI timingText;
 
+    Color defaultTextColor;
+    Color invis;
+
+    void Awake()
+    {
+        defaultTextColor = timingText.color;
+        invis = timingText.color;
+        invis.a = 0;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         // Find the playerScore component in the scene and assign it to the playerScore variable.
         gameManager = FindFirstObjectByType<GameManager>();
 
-        StartCoroutine(SpawnBeat()); //Start spawning the beat
+        if(timingType == TimingType.perfect)
+            StartCoroutine(SpawnBeat()); //Start spawning the beat
     }
 
     // Update is called once per frame
@@ -42,6 +53,9 @@ public class incomingObject : MonoBehaviour
     {
         // Call the OnCollisionEnter method to check for collisions with the objectToColilde.
         //OnCollisionEnter(objectToColilde);
+
+        if(timingType == TimingType.perfect) //Just make only one update it
+            timingText.color = Color.Lerp(timingText.color, invis, Time.deltaTime * 6);
     }
 
     // This method is called when the object collides with another object.
@@ -51,8 +65,11 @@ public class incomingObject : MonoBehaviour
     public void OnTriggerStay2D(Collider2D collision)
     {
         // If the objectSprite and objectToColilde collide, the player's score is increased.
-        if (IsOnCollisionEnter(collision))
+
+        BeatMovement beatMovement = collision.gameObject.GetComponent<BeatMovement>();
+        if (IsOnCollisionEnter(collision) && !beatMovement.alreadyHit)
         {
+            timingText.color = defaultTextColor;
             if(timingType == TimingType.early)
             {
                 gameManager.PointIncrease(1);
@@ -77,6 +94,7 @@ public class incomingObject : MonoBehaviour
                 clickSound.Play();   
                 timingText.text = "Too Late";
             }
+            beatMovement.alreadyHit = true;
         }
     }
 

@@ -191,7 +191,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  lifetime: 8
+  lifetime: 0.75
+  alreadyHit: 0
 --- !u!61 &5301064134697672709
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -263,5 +264,5 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
