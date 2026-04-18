@@ -16,6 +16,7 @@ public class incomingObject : MonoBehaviour
     [SerializeField] float beatInterval;
     [SerializeField] GameObject beat;
     [SerializeField] Transform spawnPoint;
+    [SerializeField] AudioSource clickSound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -45,6 +46,7 @@ public class incomingObject : MonoBehaviour
             gameManager.PointIncrease(1);
             Destroy(collision.gameObject);
             part.Play();
+            clickSound.Play();
         }
     }
 
