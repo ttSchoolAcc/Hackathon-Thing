@@ -2,6 +2,14 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using TMPro;
+
+enum TimingType
+{
+    early,
+    perfect,
+    late,
+}
 
 public class incomingObject : MonoBehaviour
 {
@@ -17,6 +25,8 @@ public class incomingObject : MonoBehaviour
     [SerializeField] GameObject beat;
     [SerializeField] Transform spawnPoint;
     [SerializeField] AudioSource clickSound;
+    [SerializeField] TimingType timingType;
+    [SerializeField] TextMeshProUGUI timingText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -43,10 +53,30 @@ public class incomingObject : MonoBehaviour
         // If the objectSprite and objectToColilde collide, the player's score is increased.
         if (IsOnCollisionEnter(collision))
         {
-            gameManager.PointIncrease(1);
-            Destroy(collision.gameObject);
-            part.Play();
-            clickSound.Play();
+            if(timingType == TimingType.early)
+            {
+                gameManager.PointIncrease(1);
+                Destroy(collision.gameObject);
+                part.Play();
+                clickSound.Play();           
+                timingText.text = "Too Early";
+            }
+            else if(timingType == TimingType.perfect)
+            {
+                gameManager.PointIncrease(2);
+                Destroy(collision.gameObject);
+                part.Play();
+                clickSound.Play();   
+                timingText.text = "Perfect";
+            }
+            else if(timingType == TimingType.late)
+            {
+                gameManager.PointIncrease(1);
+                Destroy(collision.gameObject);
+                part.Play();
+                clickSound.Play();   
+                timingText.text = "Too Late";
+            }
         }
     }
 
