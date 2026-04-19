@@ -1,3 +1,5 @@
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/839ffc1b-8c75-4291-848f-fc4bd7462aa7" />
+
 <h1>CPR Rhythm Simulation (Social Good)</h1> 
 
 This game simulation lets you play a simplified simulation on how to administer CPR. <br/><br/>
@@ -9,3 +11,5 @@ Download the folder named "CPR RHYTHM BUILD" found at the front of the repo. Ins
 
 <h2>Controls</h2>
 Press [Spacebar] whenever the red bars intersect with the blue circle.
+
+
