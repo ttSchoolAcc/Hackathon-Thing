@@ -8,7 +8,8 @@ public class FactGiving : MonoBehaviour
     [SerializeField] GameObject infoBox;
     [SerializeField] TextMeshProUGUI info;
     [SerializeField] string[] factsToSay;
-    [SerializeField] float factInterval = 10;
+    [SerializeField] float factStayTime = 8;
+    [SerializeField] float factRestTime = 2;
 
     void Start()
     {
@@ -22,9 +23,9 @@ public class FactGiving : MonoBehaviour
         {
             info.text = factsToSay[Random.Range(0, factsToSay.Length)];
             infoBox.SetActive(true);
-            yield return new WaitForSeconds(factInterval);
+            yield return new WaitForSeconds(factStayTime);
             infoBox.SetActive(false);
-            yield return new WaitForSeconds(factInterval);
+            yield return new WaitForSeconds(factRestTime);
         }
     }
 }
