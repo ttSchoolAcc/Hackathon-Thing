@@ -136,6 +136,11 @@ public class incomingObject : MonoBehaviour
         //}
     }
 
+    public void OnTriggerExit2D(Collider2D collider)
+    {
+        currBeat = null;
+    }
+
     // This method checks if the collision is with the objectToColilde and if the space key is pressed.
     public bool IsOnCollisionEnter(Collider2D collision)
     {
