@@ -1,4 +1,4 @@
-<h1>CPR Rhythm Simulation</h1> 
+<h1>CPR Rhythm Simulation (Social Good)</h1> 
 ******* Check dev branch for better working version *******
 
 This game simulation lets you play a simplified simulation on how to administer CPR. <br/><br/>
