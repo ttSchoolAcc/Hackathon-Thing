@@ -1,4 +1,5 @@
-<h1>CPR Rhythm Simulation</h1> *Check dev branch for better working version
+<h1>CPR Rhythm Simulation</h1> 
+******* Check dev branch for better working version *******
 
 This game simulation lets you play a simplified simulation on how to administer CPR. <br/><br/>
 The game is also full of interesting and useful information on the real life utility of CPR such as how to administer it and what positive effects it has on your family and community. <br/><br/>
