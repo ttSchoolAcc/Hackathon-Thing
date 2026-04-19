@@ -31,6 +31,8 @@ public class incomingObject : MonoBehaviour
     Color defaultTextColor;
     Color invis;
 
+    Collider2D currBeat;
+
     void Awake()
     {
         defaultTextColor = timingText.color;
@@ -56,6 +58,41 @@ public class incomingObject : MonoBehaviour
 
         if(timingType == TimingType.perfect) //Just make only one update it
             timingText.color = Color.Lerp(timingText.color, invis, Time.deltaTime * 6);
+
+        if(currBeat != null)
+        {
+            BeatMovement beatMovement = currBeat.gameObject.GetComponent<BeatMovement>();
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                timingText.color = defaultTextColor;
+                if(timingType == TimingType.early)
+                {
+                    gameManager.PointIncrease(1);
+                    Destroy(currBeat.gameObject);
+                    part.Play();
+                    clickSound.Play();           
+                    timingText.text = "Too Early";
+                }
+                else if(timingType == TimingType.perfect)
+                {
+                    gameManager.PointIncrease(2);
+                    Destroy(currBeat.gameObject);
+                    part.Play();
+                    clickSound.Play();   
+                    timingText.text = "Perfect";
+                }
+                else if(timingType == TimingType.late)
+                {
+                    gameManager.PointIncrease(1);
+                    Destroy(currBeat.gameObject);
+                    part.Play();
+                    clickSound.Play();   
+                    timingText.text = "Too Late";
+                }
+                //beatMovement.alreadyHit = true;
+            }
+            
+        }
     }
 
     // This method is called when the object collides with another object.
@@ -65,37 +102,38 @@ public class incomingObject : MonoBehaviour
     public void OnTriggerStay2D(Collider2D collision)
     {
         // If the objectSprite and objectToColilde collide, the player's score is increased.
-
-        BeatMovement beatMovement = collision.gameObject.GetComponent<BeatMovement>();
-        if (IsOnCollisionEnter(collision) && !beatMovement.alreadyHit)
-        {
-            timingText.color = defaultTextColor;
-            if(timingType == TimingType.early)
-            {
-                gameManager.PointIncrease(1);
-                Destroy(collision.gameObject);
-                part.Play();
-                clickSound.Play();           
-                timingText.text = "Too Early";
-            }
-            else if(timingType == TimingType.perfect)
-            {
-                gameManager.PointIncrease(2);
-                Destroy(collision.gameObject);
-                part.Play();
-                clickSound.Play();   
-                timingText.text = "Perfect";
-            }
-            else if(timingType == TimingType.late)
-            {
-                gameManager.PointIncrease(1);
-                Destroy(collision.gameObject);
-                part.Play();
-                clickSound.Play();   
-                timingText.text = "Too Late";
-            }
-            beatMovement.alreadyHit = true;
-        }
+        //if(currBeat != null && currBeat.tag == "incomingObject")
+            currBeat = collision;
+        // BeatMovement beatMovement = collision.gameObject.GetComponent<BeatMovement>();
+        // if (IsOnCollisionEnter(collision) && !beatMovement.alreadyHit)
+        // {
+        //     timingText.color = defaultTextColor;
+        //     if(timingType == TimingType.early)
+        //     {
+        //         gameManager.PointIncrease(1);
+        //         Destroy(collision.gameObject);
+        //         part.Play();
+        //         clickSound.Play();           
+        //         timingText.text = "Too Early";
+        //     }
+        //     else if(timingType == TimingType.perfect)
+        //     {
+        //         gameManager.PointIncrease(2);
+        //         Destroy(collision.gameObject);
+        //         part.Play();
+        //         clickSound.Play();   
+        //         timingText.text = "Perfect";
+        //     }
+        //     else if(timingType == TimingType.late)
+        //     {
+        //         gameManager.PointIncrease(1);
+        //         Destroy(collision.gameObject);
+        //         part.Play();
+        //         clickSound.Play();   
+        //         timingText.text = "Too Late";
+        //     }
+        //     beatMovement.alreadyHit = true;
+        //}
     }
 
     // This method checks if the collision is with the objectToColilde and if the space key is pressed.
