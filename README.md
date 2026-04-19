@@ -7,7 +7,7 @@ The game is also full of interesting and useful information on the real life uti
 The main goal of this game is to raise awareness of CPR and Basic Life Support. We aim to encourage people to go out and formally learn these topics. <br/><br/>
 
 <h2>How To Use</h2>
-Download the folder named "CPR RHYTHM BUILD" found at the front of the repo. Inside "CPR RHYTHM BUILD" launch "Hackathon Thing.exe" to run the program.
+Download the folder named "CPR RHYTHM BUILD" found at the front of the repo (you might have to just download the entire repo zip). Inside "CPR RHYTHM BUILD" launch "Hackathon Thing.exe" to run the program.
 
 <h2>Controls</h2>
 Press [Spacebar] whenever the red bars intersect with the blue circle.
