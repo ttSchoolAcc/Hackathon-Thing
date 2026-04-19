@@ -18,7 +18,7 @@ public class FactGiving : MonoBehaviour
 
     IEnumerator FactGive()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(4);
         while(true)
         {
             info.text = factsToSay[Random.Range(0, factsToSay.Length)];
